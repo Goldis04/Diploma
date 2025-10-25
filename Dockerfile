@@ -1,4 +1,13 @@
-FROM openjdk:11-jre-slim
-COPY artifacts/aqa-shop.jar /app/aqa-shop.jar
+FROM node:18-alpine
+
 WORKDIR /app
-CMD ["java", "-jar", "aqa-shop.jar"]
+
+COPY gate-simulator/package*.json ./
+
+RUN npm ci --only=production
+
+COPY gate-simulator/ ./
+
+EXPOSE 9999
+
+CMD ["npm", "start"]

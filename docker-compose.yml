@@ -1,37 +1,33 @@
 services:
   mysql:
-    image: mysql:8.0
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
+    image: mysql:8.0.34
     restart: always
+    ports:
+      - '3306:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: app
-      MYSQL_USER: app
-      MYSQL_PASSWORD: pass
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=app
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=pass
 
-  postgresql:
-    image: postgres:13
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
+  postgres:
+    image: postgres:15
     restart: always
+    ports:
+      - '5432:5432'
     environment:
-      POSTGRES_DB: app
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: pass
+      - POSTGRES_DB=app
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=pass
+
 
   gate-simulator:
-    build: ./gate-simulator
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "9999:9999"
-    volumes:
-      - ./gate-simulator/data.json:/app/data.json
-    restart: always
-
-volumes:
-  mysql-data:
-  postgres-data:
+      - '9999:9999'
+    depends_on:
+      - mysql
+      - postgres
+    restart: unless-stopped
