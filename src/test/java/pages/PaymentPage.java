@@ -17,7 +17,7 @@ public class PaymentPage {
     private final SelenideElement closeNotification = $(".notification__closer");
     private final SelenideElement errorNotification = $(".notification_status_error");
     private final SelenideElement validationError = $(".input__sub");
-    private SelenideElement heading = $$(".heading").find(Condition.exactText("Оплата по карте"));
+    private SelenideElement heading = $$("h3.heading").find(Condition.exactText("Оплата по карте"));
     private ElementsCollection formField = $$(".input__inner");
     private final SelenideElement cardNumber = formField.findBy(Condition.text("Номер карты")).$(".input__control");
     private final SelenideElement month = formField.findBy(Condition.text("Месяц")).$(".input__control");

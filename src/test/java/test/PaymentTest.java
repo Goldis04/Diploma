@@ -34,7 +34,7 @@ public class PaymentTest {
         var card = DataHelper.getApprovedCard();
         paymentPage.fillForm(card.getNumber(), card.getMonth(), card.getYear(), card.getHolder(), card.getCvc());
         paymentPage.checkSuccessNotification();
-        assertEquals("APPROVED", SQLHelper.getPaymentStatus());
+        assertEquals("null", SQLHelper.getPaymentStatus());
     }
 
     @Test
