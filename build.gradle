@@ -31,6 +31,7 @@ dependencies {
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
     testImplementation 'mysql:mysql-connector-java:8.0.33'
     testImplementation 'org.postgresql:postgresql:42.6.0'
+    implementation 'commons-dbutils:commons-dbutils:1.7'
 
 }
 

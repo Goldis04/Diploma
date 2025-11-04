@@ -28,14 +28,25 @@ public class CreditTest {
     }
 
     @Test
-    @DisplayName("19. Оплата тура в кредит со статусом APPROVED и валидными данными")
+//    @DisplayName("19. Оплата тура в кредит со статусом APPROVED и валидными данными")
+//    void shouldSuccessWithApprovedCreditCard() {
+//        var creditPage = new MainPage().openCreditPage();
+//        var card = DataHelper.getApprovedCard();
+//        creditPage.fillForm(card.getNumber(), card.getMonth(), card.getYear(), card.getHolder(), card.getCvc());
+//        creditPage.checkSuccessNotification();
+//
+//        System.out.println("=== DEBUG CREDIT TEST ===");
+//        String status = SQLHelper.getCreditPaymentStatus();
+//        System.out.println("Credit status from DB: '" + status + "'");
+//        System.out.println("=== END DEBUG ===");
+//        assertEquals("APPROVED", status);
+  @DisplayName("19. Оплата тура в кредит со статусом APPROVED и валидными данными")
     void shouldSuccessWithApprovedCreditCard() {
-        var creditPage = new MainPage().openCreditPage();
-        var card = DataHelper.getApprovedCard();
-        creditPage.fillForm(card.getNumber(), card.getMonth(), card.getYear(), card.getHolder(), card.getCvc());
-        creditPage.checkSuccessNotification();
-        assertEquals("APPROVED", SQLHelper.getCreditPaymentStatus());
-    }
+       var creditPage = new MainPage().openCreditPage();
+       var card = DataHelper.getApprovedCard();        creditPage.fillForm(card.getNumber(), card.getMonth(), card.getYear(), card.getHolder(), card.getCvc());
+       creditPage.checkSuccessNotification();
+       assertEquals("APPROVED", SQLHelper.getCreditPaymentStatus());
+   }
 
     @Test
     @DisplayName("20. Оплата тура в кредит со статусом DECLINED и валидными данными")

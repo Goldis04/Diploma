@@ -43,7 +43,7 @@ java -jar artifacts/aqa-shop.jar -Dspring.datasource.url=jdbc:postgresql://local
 
 4.2. Запустить автотесты с PostgreSQL:
 
-./gradlew clean test -Ddb.url=jdbc:postgresql://localhost:5432/app -Ddb.user=app -Ddb.password=pass
+./gradlew clean test "-Pdb.url=jdbc:mysql://localhost:3306/app" "-Pdb.user=app" "-Pdb.password=pass"
 
 В браузере открыть SUT в окне с адресом:
 
